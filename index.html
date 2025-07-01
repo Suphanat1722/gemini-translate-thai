@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typhoon Translate</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <div class="header-main">
+        <h1>Typhoon Translate</h1>
+        <div class="header-actions">
+          <button class="icon-button" id="theme-switcher" title="Toggle Theme">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+          </button>
+          <button class="icon-button" id="settings-button" title="Settings">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+        </div>
+      </div>
+      <div class="language-selector-wrapper">
+        <select id="language-selector" class="language-selector" aria-label="Translation direction">
+          <option value="th-en">ไทย → อังกฤษ</option>
+          <option value="en-th" selected>อังกฤษ → ไทย</option>
+          <option value="ja-th">ญี่ปุ่น → ไทย</option>
+          <option value="en-ja">อังกฤษ → ญี่ปุ่น</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="messages-panel" id="chat-window" aria-live="polite">
+      </main>
+
+    <footer class="chat-footer">
+      <form class="chat-input-form" id="chat-form">
+        <textarea id="message-input" placeholder="พิมพ์ข้อความ..." rows="1" aria-label="Message input"></textarea>
+        <button type="submit" title="Send" aria-label="Send message" disabled>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <dialog id="settings-modal" class="modal-overlay">
+    <div class="modal-content" role="document">
+      <header class="modal-header">
+        <h2><i class="fa-solid fa-cogs"></i> ตั้งค่า (Settings)</h2>
+        <button id="close-settings-button" class="icon-button close-modal" aria-label="Close settings">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="form-group">
+        <label for="model-name-input">ชื่อโมเดล (Gemini Model Name)</label>
+        <input type="text" id="model-name-input" />
+      </div>
+      <div class="form-group">
+        <label for="api-key-input">Gemini API Key</label>
+        <input type="password" id="api-key-input" placeholder="กรอก API Key ที่ได้จาก Google AI Studio" />
+      </div>
+      <footer class="modal-actions">
+        <button id="save-settings-button" class="button-primary">บันทึก</button>
+        <button type="button" id="cancel-settings-button" class="button-secondary">ยกเลิก</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <div id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>
